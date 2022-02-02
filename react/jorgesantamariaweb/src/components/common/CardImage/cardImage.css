@@ -1,0 +1,68 @@
+@font-face {
+  font-family: "Yomogi";
+  src: url("../../../fonts/Yomogi-Regular.ttf");
+}
+
+.cardImageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1.5rem;
+}
+
+.cardImageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.cardImage {
+  width: 14rem;
+  height: 14rem;
+}
+
+.textCardImage {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: white;
+  font-family: "Yomogi";
+}
+
+.titleCardImage {
+  text-align: center;
+  padding: 0.5rem;
+  font-family: "Yomogi";
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 581px) {
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 580px) {
+
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardImage {
+    width: 12rem;
+    height: 12rem;
+  }
+}

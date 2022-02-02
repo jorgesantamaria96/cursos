@@ -1,0 +1,37 @@
+/* All styles for my web app */
+
+html,
+body,
+#root,
+.App {
+  height: 100% !important;
+  width: 100% !important;
+  background: #010101;
+  background-position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: "Yomogi";
+  src: url("./fonts/Yomogi-Regular.ttf");
+}
+
+.background {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.alignCenter {
+  display: flex;
+  height: auto;
+  min-height: 77vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.alignFooter {
+  vertical-align: center;
+  justify-content: center;
+}

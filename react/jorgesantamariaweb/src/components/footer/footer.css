@@ -1,0 +1,51 @@
+.footerContent {
+  display: flex;
+  margin-left: 6rem;
+  margin-right: 6rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.alignItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.iconContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 683px) {
+  .name {
+    font-size: 7rem;
+  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 682px) {
+  .footerContent {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+  
+  .iconContent {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 1.5rem;
+  }
+}

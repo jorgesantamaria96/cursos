@@ -1,0 +1,31 @@
+###
+GET http://localhost:3000/api/tasks
+
+###
+GET http://localhost:3000/api/tasks?size=5&page=0
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Tarea 1",
+    "description": "Trabajo freelance"
+}
+
+###
+GET http://localhost:3000/api/tasks/601092609129222bf6616d2f
+
+###
+DELETE http://localhost:3000/api/tasks/6010c45153fbfa0e48d4b35b
+
+###
+GET http://localhost:3000/api/tasks/done
+
+###
+PUT http://localhost:3000/api/tasks/60109311b7715a2c4accb1f0
+Content-Type: application/json
+
+{
+    "title": "Crear una app en React Native"
+}

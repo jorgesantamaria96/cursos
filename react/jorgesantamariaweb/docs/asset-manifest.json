@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/jorgesantamariaweb/static/css/main.19296826.chunk.css",
+    "main.js": "/jorgesantamariaweb/static/js/main.5bed1b8e.chunk.js",
+    "main.js.map": "/jorgesantamariaweb/static/js/main.5bed1b8e.chunk.js.map",
+    "runtime-main.js": "/jorgesantamariaweb/static/js/runtime-main.c3c62fa5.js",
+    "runtime-main.js.map": "/jorgesantamariaweb/static/js/runtime-main.c3c62fa5.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/jorgesantamariaweb/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.39c3f487.chunk.js": "/jorgesantamariaweb/static/js/2.39c3f487.chunk.js",
+    "static/js/2.39c3f487.chunk.js.map": "/jorgesantamariaweb/static/js/2.39c3f487.chunk.js.map",
+    "static/js/3.7434fec4.chunk.js": "/jorgesantamariaweb/static/js/3.7434fec4.chunk.js",
+    "static/js/3.7434fec4.chunk.js.map": "/jorgesantamariaweb/static/js/3.7434fec4.chunk.js.map",
+    "index.html": "/jorgesantamariaweb/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/jorgesantamariaweb/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.19296826.chunk.css.map": "/jorgesantamariaweb/static/css/main.19296826.chunk.css.map",
+    "static/js/2.39c3f487.chunk.js.LICENSE.txt": "/jorgesantamariaweb/static/js/2.39c3f487.chunk.js.LICENSE.txt",
+    "static/media/cardImage.css": "/jorgesantamariaweb/static/media/Yomogi-Regular.9d04eaaa.ttf",
+    "static/media/comercio_repartidor.3a90909c.png": "/jorgesantamariaweb/static/media/comercio_repartidor.3a90909c.png",
+    "static/media/consumidor.c46e561b.png": "/jorgesantamariaweb/static/media/consumidor.c46e561b.png",
+    "static/media/greco.6d4bb218.png": "/jorgesantamariaweb/static/media/greco.6d4bb218.png",
+    "static/media/profile.85be56e3.jpg": "/jorgesantamariaweb/static/media/profile.85be56e3.jpg",
+    "static/media/superpago.c516f005.png": "/jorgesantamariaweb/static/media/superpago.c516f005.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c3c62fa5.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.39c3f487.chunk.js",
+    "static/css/main.19296826.chunk.css",
+    "static/js/main.5bed1b8e.chunk.js"
+  ]
+}

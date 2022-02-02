@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Yomogi";
+  src: url("../../../fonts/Yomogi-Regular.ttf");
+}
+
+.experienceContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alignItems {
+  justify-content: center;
+  height: auto;
+}
+
+.title {
+  align-items: center;
+  padding: 3rem;
+  font-size: 4rem;
+  font-family: "Yomogi";
+  color: white;
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 580px) {
+  .title {
+    font-size: 2rem;
+  }
+}

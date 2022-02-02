@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Yomogi";
+  src: url("../../../fonts/Yomogi-Regular.ttf");
+}
+
+.profileContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alignItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 400px;
+  height: 300px;
+  border-radius: 10%;
+  margin: 30px;
+  align-items: center;
+}
+
+.textStyle {
+  display: flex;
+  height: auto;
+  margin: 30px;
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-family: "Yomogi";
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 426px) {
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 425px) {
+  .image {
+    width: 300px;
+    height: 200px;
+  }
+}

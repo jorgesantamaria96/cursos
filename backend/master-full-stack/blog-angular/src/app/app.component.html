@@ -1,0 +1,122 @@
+<div class="container">
+  <!-- CONTENEDOR PRINCIPAL -->
+  <br />
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">
+      <img
+        src="assets/images/angular.png"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+      NG BLOG
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/inicio']"
+            >Inicio <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item" *ngFor="let category of categories">
+          <a
+            class="nav-link"
+            [routerLink]="['/categoria', category.id]"
+            routerLinkActive="router-link-active"
+            >{{ category.name }}</a
+          >
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-right" *ngIf="!user">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+        </li>
+      </ul>
+
+      <ul
+        class="navbar-nav navbar-right"
+        *ngIf="user && user.name && user.surname"
+      >
+        <li *ngIf="user && user.image" class="nav-item">
+          <div class="avatar_mask">
+            <img
+              src="{{ url + 'user/avatar/' + user.image }}"
+              class="avatar_nav"
+            />
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {{ user.name + " " + user.surname }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/crear-entrada']"
+              >Crear entrada</a
+            >
+            <a class="dropdown-item" [routerLink]="['/crear-categoria']"
+              >Crear categoría</a
+            >
+            <div class="dropdown-divider"></div>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/perfil', user.sub]"
+              routerLinkActive="router-link-active"
+              >Mi perfil</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLink]="['/ajustes']"
+              routerLinkActive="router-link-active"
+              >Ajustes</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLink]="['/logout/1']"
+              routerLinkActive="router-link-active"
+              >Salir</a
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- CERRAR BARRA DE NAVEGACION -->
+
+  <!-- CONTENIDO -->
+  <router-outlet></router-outlet>
+
+  <!-- FOOTER -->
+  <br />
+  <footer>
+    <hr />
+    Master en desarrollo web fullstack, Jorge Santamaria &copy;
+    <hr />
+  </footer>
+</div>
