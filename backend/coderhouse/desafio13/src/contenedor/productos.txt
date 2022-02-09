@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "name": "Generic Plastic Hat",
+    "price": "952.00",
+    "thumbnail": "http://placeimg.com/640/480/animals"
+  },
+  {
+    "id": 1,
+    "name": "Gorgeous Frozen Chair",
+    "price": "523.00",
+    "thumbnail": "http://placeimg.com/640/480/animals"
+  },
+  {
+    "id": 2,
+    "name": "Incredible Rubber Bike",
+    "price": "390.00",
+    "thumbnail": "http://placeimg.com/640/480/animals"
+  },
+  {
+    "id": 3,
+    "name": "Intelligent Concrete Towels",
+    "price": "63.00",
+    "thumbnail": "http://placeimg.com/640/480/animals"
+  },
+  {
+    "id": 4,
+    "name": "Small Soft Shoes",
+    "price": "776.00",
+    "thumbnail": "http://placeimg.com/640/480/animals"
+  }
+]
