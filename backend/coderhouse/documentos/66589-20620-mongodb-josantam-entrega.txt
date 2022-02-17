@@ -1,0 +1,227 @@
+### VISTA BASES DE DATOS ###
+> show databases;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+
+### CREACION BASES DE DATOS ###
+> use ecommerce_coderhouse
+switched to db ecommerce_coderhouse
+
+
+### CREACION DE COLECCIONES ###
+> db.createCollection("productos")
+{ "ok" : 1 }
+> db.createCollection("mensajes")
+{ "ok" : 1 }
+> show collections;
+mensajes
+productos
+
+
+### INSERT PRODUCTOS ###
+> db.productos.insert({"name": "PC", "price": "1500", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "Laptop", "price": "3500", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "Keyboard", "price": "800", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "Mouse", "price": "600", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "Monitor", "price": "1700", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "SSD 500GB", "price": "2800", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "HDD 1TB", "price": "3800", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "Memoria RAM 32GB", "price": "4500", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "Mouse Pad", "price": "200", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.productos.insert({"name": "MP3", "price": "260", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+
+
+|||||| PROBLEMA ||||||
+
+Me topé con el error en el que tenía que ordenar los productos mediante el precio, pero los ordenaba mal ya que estaban ingresados los valores del tipo string
+
+||||||||||||
+
+|||||| SOLUCIÓN ||||||
+
+Ingresé la siguiente expresión:
+> db.productos.find().forEach(function (x) {x.price = parseInt(x.price); db.productos.save(x);});
+
+Y obtuve el siguiente resultado:
+> db.productos.find({});
+{ "_id" : ObjectId("61dc41f1b941915126b4810f"), "name" : "PC", "price" : 1500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:25:53 GMT-0300 (-03)", "updated_at" : undefined }
+{ "_id" : ObjectId("61dc42cab941915126b48110"), "name" : "Laptop", "price" : 3500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42deb941915126b48111"), "name" : "Keyboard", "price" : 800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42ebb941915126b48112"), "name" : "Mouse", "price" : 600, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42f9b941915126b48113"), "name" : "Monitor", "price" : 1700, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc430db941915126b48114"), "name" : "SSD 500GB", "price" : 2800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc431ab941915126b48115"), "name" : "HDD 1TB", "price" : 3800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : 4500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc433bb941915126b48117"), "name" : "Mouse Pad", "price" : 200, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc448d47d027f50f0f3d57"), "name" : "MP3", "price" : 260, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc5efa30a34b76898a952b"), "name" : "Auriculares CX", "price" : 920, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)" }
+
+***** PROBLEMA RESUELTO *****
+
+||||||||||||
+ 
+
+### MOSTRAR TODOS LOS PRODUCTOS ###
+> db.productos.find()
+{ "_id" : ObjectId("61dc41f1b941915126b4810f"), "name" : "PC", "price" : "1500", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:25:53 GMT-0300 (-03)", "updated_at" : undefined }
+{ "_id" : ObjectId("61dc42cab941915126b48110"), "name" : "Laptop", "price" : "3500", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42deb941915126b48111"), "name" : "Keyboard", "price" : "800", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42ebb941915126b48112"), "name" : "Mouse", "price" : "600", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42f9b941915126b48113"), "name" : "Monitor", "price" : "1700", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc430db941915126b48114"), "name" : "SSD 500GB", "price" : "2800", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc431ab941915126b48115"), "name" : "HDD 1TB", "price" : "3800", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : "4500", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc433bb941915126b48117"), "name" : "Mouse Pad", "price" : "200", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc448d47d027f50f0f3d57"), "name" : "MP3", "price" : "260", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)" }
+
+
+### CONTAR DOCUMENTOS EN PRODUCTOS
+> db.productos.estimatedDocumentCount();
+10
+
+
+### INSERT MENSAJES ###
+>db.mensajes.insert({"email": "jorge@jorge.com", "text": "Hola buenos días", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge2@jorge.com", "text": "Hola como estás?", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge@jorge.com", "text": "Trabajando", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge2@jorge.com", "text": "De que trabajas", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge@jorge.com", "text": "Javascript me da de comer", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge2@jorge.com", "text": "Hace la detwitter", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge@jorge.com", "text": "Gracias Javascript :)", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge2@jorge.com", "text": "Deja de robar con eso", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge@jorge.com", "text": "Voy a hacer la que me pinte", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge2@jorge.com", "text": "Me parece bien, saludos", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+> db.mensajes.insert({"email": "jorge@jorge.com", "text": "Ok :(", "date": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+
+
+### MOSTRAR TODOS LOS MENSAJES ###
+> db.mensajes.find();
+{ "_id" : ObjectId("61dc44fc47d027f50f0f3d58"), "email" : "jorge@jorge.com", "text" : "Hola buenos días", "date" : "Mon Jan 10 2022 11:38:52 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc450947d027f50f0f3d59"), "email" : "jorge2@jorge.com", "text" : "Hola como estás?", "date" : "Mon Jan 10 2022 11:39:05 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc451547d027f50f0f3d5a"), "email" : "jorge@jorge.com", "text" : "Trabajando", "date" : "Mon Jan 10 2022 11:39:17 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc452147d027f50f0f3d5b"), "email" : "jorge2@jorge.com", "text" : "De que trabajas", "date" : "Mon Jan 10 2022 11:39:29 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc452d47d027f50f0f3d5c"), "email" : "jorge@jorge.com", "text" : "Javascript me da de comer", "date" : "Mon Jan 10 2022 11:39:41 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc453e47d027f50f0f3d5d"), "email" : "jorge2@jorge.com", "text" : "Hace la detwitter", "date" : "Mon Jan 10 2022 11:39:58 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc454e47d027f50f0f3d5e"), "email" : "jorge@jorge.com", "text" : "Gracias Javascript :)", "date" : "Mon Jan 10 2022 11:40:14 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc456047d027f50f0f3d5f"), "email" : "jorge2@jorge.com", "text" : "Deja de robar con eso", "date" : "Mon Jan 10 2022 11:40:32 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc456e47d027f50f0f3d60"), "email" : "jorge@jorge.com", "text" : "Voy a hacer la que me pinte", "date" : "Mon Jan 10 2022 11:40:46 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc458147d027f50f0f3d61"), "email" : "jorge2@jorge.com", "text" : "Me parece bien, saludos", "date" : "Mon Jan 10 2022 11:41:05 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc458c47d027f50f0f3d62"), "email" : "jorge@jorge.com", "text" : "Ok :(", "date" : "Mon Jan 10 2022 11:41:16 GMT-0300 (-03)" }
+
+### CONTAR DOCUMENTOS EN MENSAJES ###
+> db.mensajes.estimatedDocumentCount();
+11
+
+
+##### CRUD SOBRE PRODUCTOS #####
+a) Agregar un producto más a la colección de productos
+> db.productos.insert({"name": "Auriculares CX", "price": "920", "thumbnail": "www.cualquiercosa.com.ar", "created_at": new Date().toString(), "updated_at": new Date().toString() })
+WriteResult({ "nInserted" : 1 })
+
+b)i) Listar los productos con precio menor a 1000 pesos
+> db.productos.find( { $where: "this.price < 1000 " });
+{ "_id" : ObjectId("61dc42deb941915126b48111"), "name" : "Keyboard", "price" : "800", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42ebb941915126b48112"), "name" : "Mouse", "price" : "600", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc433bb941915126b48117"), "name" : "Mouse Pad", "price" : "200", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc448d47d027f50f0f3d57"), "name" : "MP3", "price" : "260", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc5efa30a34b76898a952b"), "name" : "Auriculares CX", "price" : "920", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)" }
+
+
+b)ii) Listar los productos con precio entre los 1000 a 3000
+> db.productos.find( { $where: "this.price > 1000 && this.price < 3000 " });
+{ "_id" : ObjectId("61dc41f1b941915126b4810f"), "name" : "PC", "price" : "1500", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:25:53 GMT-0300 (-03)", "updated_at" : undefined }
+{ "_id" : ObjectId("61dc42f9b941915126b48113"), "name" : "Monitor", "price" : "1700", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc430db941915126b48114"), "name" : "SSD 500GB", "price" : "2800", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)" }
+
+
+b)iii) Listar los productos con precio mayor a 3000
+> db.productos.find( { $where: "this.price > 3000 " });
+{ "_id" : ObjectId("61dc42cab941915126b48110"), "name" : "Laptop", "price" : "3500", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc431ab941915126b48115"), "name" : "HDD 1TB", "price" : "3800", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : "4500", "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)" }
+
+
+b)iv) Realizar una consulta que traiga sólo el nombre del tercer producto más barato.
+> db.productos.find({}).sort({ price: 1 });
+{ "_id" : ObjectId("61dc433bb941915126b48117"), "name" : "Mouse Pad", "price" : 200, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc448d47d027f50f0f3d57"), "name" : "MP3", "price" : 260, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42ebb941915126b48112"), "name" : "Mouse", "price" : 600, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42deb941915126b48111"), "name" : "Keyboard", "price" : 800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc5efa30a34b76898a952b"), "name" : "Auriculares CX", "price" : 920, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc41f1b941915126b4810f"), "name" : "PC", "price" : 1500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:25:53 GMT-0300 (-03)", "updated_at" : undefined }
+{ "_id" : ObjectId("61dc42f9b941915126b48113"), "name" : "Monitor", "price" : 1700, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc430db941915126b48114"), "name" : "SSD 500GB", "price" : 2800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc42cab941915126b48110"), "name" : "Laptop", "price" : 3500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc431ab941915126b48115"), "name" : "HDD 1TB", "price" : 3800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)" }
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : 4500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)" }
+> db.productos.find({}).sort({ price: 1 })[2].name;
+Mouse
+
+
+c) Hacer una actualizacion sobre todos los productos, agregando el campo stock a todos ellos con un valor de 100.
+> db.productos.update({}, {$set: {stock: 100}}, false, true);
+WriteResult({ "nMatched" : 11, "nUpserted" : 0, "nModified" : 10 })
+> db.productos.find({});
+{ "_id" : ObjectId("61dc41f1b941915126b4810f"), "name" : "PC", "price" : 1500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:25:53 GMT-0300 (-03)", "updated_at" : undefined, "stock" : 100 }
+{ "_id" : ObjectId("61dc42cab941915126b48110"), "name" : "Laptop", "price" : 3500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc42deb941915126b48111"), "name" : "Keyboard", "price" : 800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc42ebb941915126b48112"), "name" : "Mouse", "price" : 600, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc42f9b941915126b48113"), "name" : "Monitor", "price" : 1700, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc430db941915126b48114"), "name" : "SSD 500GB", "price" : 2800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc431ab941915126b48115"), "name" : "HDD 1TB", "price" : 3800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : 4500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc433bb941915126b48117"), "name" : "Mouse Pad", "price" : 200, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc448d47d027f50f0f3d57"), "name" : "MP3", "price" : 260, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc5efa30a34b76898a952b"), "name" : "Auriculares CX", "price" : 920, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "stock" : 100 }
+
+
+d) Cambiar el stock a 0 de los productos con precio mayores a 4000 pesos.
+> db.productos.find("this.price > 4000");
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : 4500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "stock" : 100 }
+> db.productos.update({ price: { $gte: 4000 }}, { $set: { stock: 0 }});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.productos.find("this.price > 4000");
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : 4500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "stock" : 0 }
+
+
+e) Borrar los productos con precio menor a 1000 pesos
+> db.productos.find({ price: { $lt: 1000 } });
+{ "_id" : ObjectId("61dc42deb941915126b48111"), "name" : "Keyboard", "price" : 800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:50 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc42ebb941915126b48112"), "name" : "Mouse", "price" : 600, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:03 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc433bb941915126b48117"), "name" : "Mouse Pad", "price" : 200, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:23 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc448d47d027f50f0f3d57"), "name" : "MP3", "price" : 260, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:37:01 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc5efa30a34b76898a952b"), "name" : "Auriculares CX", "price" : 920, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 13:29:46 GMT-0300 (-03)", "stock" : 100 }
+> db.productos.remove({ price: { $lt: 1000 } });
+WriteResult({ "nRemoved" : 5 })
+> db.productos.find({ price: { $lt: 1000 } });
+> 
+> db.productos.find();
+{ "_id" : ObjectId("61dc41f1b941915126b4810f"), "name" : "PC", "price" : 1500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:25:53 GMT-0300 (-03)", "updated_at" : undefined, "stock" : 100 }
+{ "_id" : ObjectId("61dc42cab941915126b48110"), "name" : "Laptop", "price" : 3500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:29:30 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc42f9b941915126b48113"), "name" : "Monitor", "price" : 1700, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:17 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc430db941915126b48114"), "name" : "SSD 500GB", "price" : 2800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:37 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc431ab941915126b48115"), "name" : "HDD 1TB", "price" : 3800, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:30:50 GMT-0300 (-03)", "stock" : 100 }
+{ "_id" : ObjectId("61dc432eb941915126b48116"), "name" : "Memoria RAM 32GB", "price" : 4500, "thumbnail" : "www.cualquiercosa.com.ar", "created_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "updated_at" : "Mon Jan 10 2022 11:31:10 GMT-0300 (-03)", "stock" : 0 }
