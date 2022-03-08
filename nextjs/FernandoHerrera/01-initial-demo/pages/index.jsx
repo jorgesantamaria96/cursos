@@ -1,25 +1,18 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import { Mainlayout } from "../components/layouts/Mainlayout";
 
 export default function HomePage() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Home - Jorge Santamaria</title>
-        <meta name="description" content="Home Page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Mainlayout>
+      <h1>Home Page</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Ir a <a href="/about">About</a>
-        </h1>
+      <h1 className={"title"}>
+        Ir a <Link href="/about">About</Link>
+      </h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-      </main>
-    </div>
+      <p className={"description"}>
+        Get started by editing <code className={"code"}>pages/index.jsx</code>
+      </p>
+    </Mainlayout>
   );
 }

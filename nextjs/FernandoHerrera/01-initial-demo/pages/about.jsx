@@ -1,25 +1,27 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import { DarkLayout } from "../components/layouts/DarkLayout";
+import { Mainlayout } from "../components/layouts/Mainlayout";
 
 export default function AboutPage() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>About - Jorge Santamaria</title>
-        <meta name="description" content="About Page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <h1>About Page</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Ir a <a href="/">Home</a>
-        </h1>
+      <h1 className={"title"}>
+        Ir a <Link href="/">Home</Link>
+      </h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/about.js</code>
-        </p>
-      </main>
-    </div>
+      <p className={"description"}>
+        Get started by editing <code className={"code"}>pages/about.jsx</code>
+      </p>
+    </>
   );
 }
+
+AboutPage.getLayout = function getLayout(page) {
+  return (
+    <Mainlayout>
+      <DarkLayout>{page}</DarkLayout>
+    </Mainlayout>
+  );
+};
